@@ -33,19 +33,26 @@ public class AdminService implements IAdminService {
 	}
 
 	@Override
-	public Admin adminLogin(String adminUserName, String adminPassword) {
+	public Admin adminLogin(String adminUsername, String adminPassword) {
 		LOG.info(" Service login");
-		this.tempadmin = adminRepository.findByAdminUsername(adminUserName);
+		this.tempadmin = adminRepository.findByAdminUsername(adminUsername);
 		this.temppassword = adminRepository.findByAdminPassword(tempadmin.getAdminPassword());
-		if (tempadmin.getAdminUsername().equalsIgnoreCase(adminUserName)
+		if (tempadmin.getAdminUsername().equalsIgnoreCase(adminUsername)
 				&& temppassword.getAdminPassword().equals(adminPassword)) {
 			isLoggedIn = true;
 			return tempadmin;
-		} else {
-			throw new InvalidLoginCredentialsException();
 		}
+		throw new InvalidLoginCredentialsException();
 	}
 }
+
+
+
+
+
+
+
+
 
 //-----------------------------------------------------Facing Problem---------------------------------------------------
 //public Admin adminLogin(Admin admin) {
