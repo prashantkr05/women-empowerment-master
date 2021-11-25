@@ -35,7 +35,7 @@ public class AdminController {
 	// http://localhost:8082/adminlogin
 	@GetMapping("/adminlogin/{adminUserName}/{adminPassword}")
 	public ResponseEntity<Admin> adminlogin(@PathVariable(name = "adminUserName") String adminUserName,
-			@PathVariable(name = "AdminPassword") String adminPassword) {
+			@PathVariable(name = "adminPassword") String adminPassword) {
 		LOG.info("Controller login");
 		Admin adm = adminService.adminLogin(adminUserName, adminPassword);
 		HttpHeaders headers = new HttpHeaders();

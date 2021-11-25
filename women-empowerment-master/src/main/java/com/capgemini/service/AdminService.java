@@ -36,7 +36,7 @@ public class AdminService implements IAdminService {
 	public Admin adminLogin(String adminUserName, String adminPassword) {
 		LOG.info(" Service login");
 		this.tempadmin = adminRepository.findByAdminUsername(adminUserName);
-		this.temppassword = adminRepository.findByAdminUsername(adminPassword);
+		this.temppassword = adminRepository.findByAdminUsername(tempadmin.getAdminPassword());
 		if (tempadmin.getAdminUsername().equalsIgnoreCase(adminUserName)
 				&& temppassword.getAdminPassword().equals(adminPassword)) {
 			isLoggedIn = true;
