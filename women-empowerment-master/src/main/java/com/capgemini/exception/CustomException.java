@@ -23,10 +23,19 @@ public class CustomException extends ResponseEntityExceptionHandler {
 	}
 
 	@ExceptionHandler(AdminNotExistsException.class)
-	public ResponseEntity<Object> handleAdminNotExistsExistsException() {
+	public ResponseEntity<Object> handleAdminNotExistsException() {
 		LOG.error("AdminNotExistsException");
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("message", "This admin is not available in database");
+		ResponseEntity<Object> response = new ResponseEntity<Object>(null, headers, HttpStatus.NOT_FOUND);
+		return response;
+	}
+
+	@ExceptionHandler(InvalidLoginCredentialsException.class)
+	public ResponseEntity<Object> handleInvalidLoginCredentialsException() {
+		LOG.error("InvalidLoginCredentialsException");
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("message", "Invalid username and password found in database");
 		ResponseEntity<Object> response = new ResponseEntity<Object>(null, headers, HttpStatus.NOT_FOUND);
 		return response;
 	}

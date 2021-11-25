@@ -11,4 +11,6 @@ public interface AdminRepository extends JpaRepository<Admin, String> {
 
 	public abstract Admin findByAdminPassword(String adminPassword);
 
+//	public abstract Admin save(Admin adminUserName, Admin adminPassword);
+
 }
